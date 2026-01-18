@@ -59,7 +59,7 @@ const profile = async (req, res, next) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const Post = require('../models/post.model'); // Circular dep avoidance if needed or just local require
+        const Post = require('../models/post.model');
         const posts = await Post.find({ author: user._id }).sort({ createdAt: -1 });
 
         res.status(200).json({

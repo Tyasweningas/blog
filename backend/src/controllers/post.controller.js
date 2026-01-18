@@ -2,7 +2,7 @@ const Post = require('../models/post.model');
 
 const createPost = async (req, res, next) => {
     try {
-        const { title, content, description, category } = req.body;
+        const { title, content, category } = req.body;
         if (!title || !content) {
             return res.status(400).json({ message: 'Title and content are required' });
         }
@@ -10,7 +10,6 @@ const createPost = async (req, res, next) => {
         const post = await Post.create({
             title,
             content,
-            description,
             category,
             author: req.userId
         });
@@ -78,11 +77,11 @@ const getPostById = async (req, res, next) => {
 
 const updatePost = async (req, res, next) => {
     try {
-        const { title, content, description, category } = req.body;
+        const { title, content, category } = req.body;
 
         const post = await Post.findByIdAndUpdate(
             req.params.id,
-            { title, content, description, category },
+            { title, content, category },
             { new: true, runValidators: true }
         );
 

@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-magazine-black: #1a1a1a;
+  --color-magazine-white: #ffffff;
+  --color-magazine-accent: #000000;
+  --color-magazine-paper: #fafafa;
+
+  --border-width-3: 3px;
+}
+
+@layer base {
+  body {
+    @apply bg-magazine-white text-magazine-black font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .magazine-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .magazine-border {
+    @apply border-magazine-black border-b-2;
+  }
+
+  .magazine-title {
+    @apply font-serif text-6xl uppercase tracking-tighter;
+  }
+
+  /* Base UI Components */
+  .mag-btn {
+    @apply px-6 py-3 font-bold uppercase tracking-widest text-sm transition-all duration-300 active:scale-95 disabled:opacity-50;
+  }
+
+  .mag-btn-primary {
+    @apply bg-magazine-black text-magazine-white border-2 border-magazine-black hover:bg-transparent hover:text-magazine-black;
+  }
+
+  .mag-btn-secondary {
+    @apply bg-transparent text-magazine-black border-2 border-magazine-black hover:bg-magazine-black hover:text-magazine-white;
+  }
+
+  .mag-btn-ghost {
+    @apply bg-transparent text-magazine-black hover:opacity-60;
+  }
+
+  .mag-btn-danger {
+    @apply bg-red-600 text-white border-2 border-red-600 hover:bg-transparent hover:text-red-600;
+  }
+
+  .mag-label {
+    @apply block text-xs font-bold uppercase tracking-widest mb-1;
+  }
+
+  .mag-input {
+    @apply w-full bg-transparent border-b-2 border-magazine-black py-2 focus:outline-none focus:border-b-4 transition-all;
+  }
+
+  .mag-textarea {
+    @apply w-full bg-transparent border-2 border-magazine-black p-4 focus:outline-none transition-all resize-none min-h-[200px];
+  }
+
+  .mag-error {
+    @apply text-red-500 text-[10px] mt-1 uppercase font-bold;
+  }
+}

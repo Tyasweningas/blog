@@ -12,8 +12,7 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
-app.options('(.*)', cors()); // Express 5 uses (.*) for wildcards
+app.use(cors()); // This handles both regular and pre-flight requests automatically
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

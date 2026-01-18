@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
         const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
 
         return res.status(201).json({ token });
-    }   catch (error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -52,12 +52,23 @@ const login = async (req, res, next) => {
 }
 
 
-const profile = async (req, res) => {
-    const user = await User.findById(req.userId).select('-password');
-    if (!user) {
-        return res.status(400).json({ message: 'User not found' });
+const profile = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.userId).select('-password');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const Post = require('../models/post.model'); // Circular dep avoidance if needed or just local require
+        const posts = await Post.find({ author: user._id }).sort({ createdAt: -1 });
+
+        res.status(200).json({
+            user,
+            posts
+        });
+    } catch (error) {
+        next(error);
     }
-    res.status(200).json(user);
 }
 
 module.exports = {

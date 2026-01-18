@@ -12,7 +12,25 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors()); // This handles both regular and pre-flight requests automatically
+app.use((req, res, next) => {
+    const allowedOrigins = [
+        'https://blog-2-eight-lake.vercel.app',
+        'https://blog-2-p26scpwkg-tyasweningas-projects.vercel.app',
+        'http://localhost:5173'
+    ];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+    }
+
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -21,8 +21,8 @@ const Home = () => {
         setLoading(true);
         try {
             const { data } = await api.get(`/posts?search=${search}&page=${page}&limit=6`);
-            setPosts(data.posts);
-            setTotalPages(data.totalPages);
+            setPosts(data.posts || []);
+            setTotalPages(data.totalPages || 1);
         } catch (err) {
             console.error('Failed to fetch posts', err);
         } finally {
@@ -67,7 +67,7 @@ const Home = () => {
                             </div>
                         )}
 
-    
+
                         {totalPages > 1 && (
                             <div className="mt-20 flex justify-center items-center space-x-12 border-t-2 border-magazine-black pt-12">
                                 <Button

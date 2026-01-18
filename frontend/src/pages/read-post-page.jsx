@@ -117,7 +117,7 @@ const PostDetail = () => {
 
                 {/* Content */}
                 <div className="prose prose-xl max-w-none font-sans leading-relaxed text-gray-800 mb-24">
-                    {post.content.split('\n').map((para, i) => (
+                    {(post.content || '').split('\n').map((para, i) => (
                         <p key={i} className="mb-8">{para}</p>
                     ))}
                 </div>

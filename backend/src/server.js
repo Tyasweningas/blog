@@ -13,21 +13,14 @@ const app = express();
 
 // Middleware
 app.use((req, res, next) => {
-    const allowedOrigins = [
-        'https://blog-2-eight-lake.vercel.app',
-        'https://blog-2-p26scpwkg-tyasweningas-projects.vercel.app',
-        'http://localhost:5173'
-    ];
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.header('Access-Control-Allow-Origin', origin);
-    }
-
+    res.header('Access-Control-Allow-Origin', origin || '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
 
     if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
+        return res.status(200).end();
     }
     next();
 });

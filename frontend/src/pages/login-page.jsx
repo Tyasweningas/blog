@@ -28,7 +28,7 @@ const Login = () => {
     return (
         <div className="py-20 min-h-[80vh] flex items-center">
             <div className="magazine-container max-w-md w-full">
-                <SectionTitle subtitle="Access your exclusive account">Identitas</SectionTitle>
+                <SectionTitle subtitle="Access your exclusive account">Login</SectionTitle>
 
                 <form onSubmit={handleSubmit} className="border-3 border-magazine-black p-10 bg-white">
                     <Input

@@ -29,7 +29,7 @@ const Register = () => {
     return (
         <div className="py-20 min-h-[80vh] flex items-center">
             <div className="magazine-container max-w-md w-full">
-                <SectionTitle subtitle="Join our elite circle of writers">Registrasi</SectionTitle>
+                <SectionTitle subtitle="Join our elite circle of writers">Register</SectionTitle>
 
                 <form onSubmit={handleSubmit} className="border-3 border-magazine-black p-10 bg-white">
                     <Input

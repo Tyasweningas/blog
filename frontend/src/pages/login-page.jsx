@@ -37,7 +37,7 @@ const Login = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="editor@blog.com"
+                        placeholder="yourname@gmail.com"
                     />
                     <Input
                         label="Password"

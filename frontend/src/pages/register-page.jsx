@@ -38,7 +38,7 @@ const Register = () => {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Christian Dior"
+                        placeholder="Full Name"
                     />
                     <Input
                         label="Email Address"
@@ -46,7 +46,7 @@ const Register = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="editor@blog.com"
+                        placeholder="yourname@gmail.com"
                     />
                     <Input
                         label="Password"
